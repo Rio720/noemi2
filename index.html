@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Romantic Card</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial, sans-serif';
+            background-color: #ffe4e1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card {
+            width: 80%;
+            max-width: 600px;
+            min-width: 300px;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.5s;
+            z-index: 10;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .photo {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            transition: height 0.5s;
+        }
+
+        .card:hover .photo {
+            height: 300px;
+        }
+
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #4a4a4a;
+        }
+
+        .content p {
+            color: #6a6a6a;
+            margin: 10px 0 0;
+        }
+
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 1;
+            animation: heartsAnimation 5s infinite;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            color: #ff69b4;
+            opacity: 0;
+            animation: heartFloat 4s infinite ease-in-out;
+        }
+
+        @keyframes heartsAnimation {
+            0% {
+                transform: scale(1);
+                opacity: 0.2;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 1;
+            }
+        }
+
+        @keyframes heartFloat {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .top-text {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 36px;
+            color: #ff1493;
+            font-weight: bold;
+            z-index: 5;
+        }
+
+        @media (max-width: 768px) {
+            .content h1 {
+                font-size: 20px;
+            }
+            .content p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-text">Te amo muchísimo Noemi</div>
+
+    <div class="hearts">
+        <div class="heart" style="top: 10%; left: 10%; animation-delay: 0s;">❤️</div>
+        <div class="heart" style="top: 20%; left: 20%; animation-delay: 1s;">❤️</div>
+        <div class="heart" style="top: 30%; left: 30%; animation-delay: 2s;">❤️</div>
+        <div class="heart" style="top: 40%; left: 40%; animation-delay: 3s;">❤️</div>
+        <div class="heart" style="top: 50%; left: 50%; animation-delay: 4s;">❤️</div>
+    </div>
+
+    <div class="card">
+        <div class="photo" id="photo"></div>
+        <div class="content" id="content">
+            <h1>Hoy es un día muy especial para una personita que ocupa un lugar muy importante en mi vida: ¡tu cumpleaños!</h1>
+            <p>Quiero felicitarte de todo corazón y desearte un día lleno de alegría, amor y momentos inolvidables.</p>
+            <p>Espero que cada uno de tus sueños se hagan realidad, porque te mereces todo lo mejor del mundo. Que este nuevo año de vida venga cargado de bendiciones, metas cumplidas, aprendizajes y muchas razones para sonreír.</p>
+            <p>Gracias por ser parte de mi vida, por los momentos que hemos compartido y por los que aún nos faltan por vivir. Eres una persona increíble, con un corazón lleno de bondad y una energía que ilumina todo a tu alrededor.</p>
+            <p>Hoy celebraremos tu vida, tus logros, y todo lo que eres y significas para quienes te rodean. Recuerda siempre lo valiosa que eres y lo mucho que te quiero. ¡Brindemos por ti y por todos los sueños que harás realidad!</p>
+            <p>¡Feliz cumpleaños! 🎉🎂✨</p>
+            <p>Que este sea el inicio de un capítulo maravilloso en tu historia.</p>
+        </div>
+    </div>
+
+    <script>
+        const photo = document.getElementById('photo');
+        const content = document.getElementById('content');
+        const images = [
+            'url("noemi.jpg")',
+            'url("amo.jpg")',
+            'url("IMG-20250105-WA0013.jpg")',
+            'url("s.jpg")',   // Nueva foto
+            'url("chula.jpg")',    // Nueva foto
+            'url("w.jpg")',   // Nueva foto
+            'url("moment.jpg")' ,   // Nueva foto
+            'url("n.jpg")',   // Nueva foto
+            'url("z.jpg")'    // Nueva foto 
+        ];
+        const messages = [
+            "No sabes lo increíblemente maravillosa que eres. Eres una persona única, y desde que llegaste a mi vida, todo cambió para mejor.",
+            "Contigo, mi mundo es más hermoso, más brillante, y lleno de razones para sonreír.",
+            "Quiero que sepas que nunca quiero irme de tu lado, porque eres todo lo que siempre busqué y mucho más.",
+            "Llegaste en el momento menos esperado, pero en el más necesario, para salvarme de mis miedos, para llenarme de esperanza, y para enseñarme lo hermoso que es vivir a tu lado.",
+            "Cada momento contigo es un regalo. Las risas, las charlas, las aventuras, incluso los silencios… todo a tu lado me llena de paz y felicidad.",
+            "Cada día contigo se siente como un nuevo comienzo lleno de posibilidades y amor infinito.",
+            "No sé cómo agradecerle a la vida por haberte cruzado en mi camino, pero lo que sí sé es que quiero cuidarte, amarte y hacerte feliz todos los días de mi vida.",
+            "Eres mi lugar seguro, mi mayor bendición, y la razón por la que cada día me esfuerzo por ser mejor.",
+            "Gracias por existir y por ser tú. Te amo con todo mi corazón, y sé que juntos podemos superar cualquier cosa y construir un futuro lleno de momentos aún más hermosos."
+        ];
+        let index = 0;
+        let audio;
+
+        function changePhoto() {
+            if (index < images.length) {
+                photo.style.backgroundImage = images[index];
+                const messageElement = document.createElement('p');
+                messageElement.textContent = messages[index];
+                content.appendChild(messageElement);
+
+                index++;
+            } else {
+                resetContent();
+            }
+        }
+
+        function resetContent() {
+            content.innerHTML = `
+                <h1>Hoy es un día muy especial para una personita que ocupa un lugar muy importante en mi vida: ¡tu cumpleaños!</h1>
+                <p>Quiero felicitarte de todo corazón y desearte un día lleno de alegría, amor y momentos inolvidables.</p>
+                <p>Espero que cada uno de tus sueños se hagan realidad, porque te mereces todo lo mejor del mundo. Que este nuevo año de vida venga cargado de bendiciones, metas cumplidas, aprendizajes y muchas razones para sonreír.</p>
+                <p>Gracias por ser parte de mi vida, por los momentos que hemos compartido y por los que aún nos faltan por vivir. Eres una persona increíble, con un corazón lleno de bondad y una energía que ilumina todo a tu alrededor.</p>
+                <p>Hoy celebraremos tu vida, tus logros, y todo lo que eres y significas para quienes te rodean. Recuerda siempre lo valiosa que eres y lo mucho que te quiero. ¡Brindemos por ti y por todos los sueños que harás realidad!</p>
+                <p>¡Feliz cumpleaños! 🎉🎂✨</p>
+                <p>Que este sea el inicio de un capítulo maravilloso en tu historia.</p>
+            `;
+            index = 0;
+        }
+
+        document.body.addEventListener('click', () => {
+            content.innerHTML = '';
+            changePhoto();
+
+            // Play background music on first click
+            if (!audio) {
+                audio = new Audio('Ed Sheeran - photograph  sub español.mp3');
+                audio.loop = true;
+                audio.play();
+            }
+        });
+
+        // Initial photo and message load
+        changePhoto();
+    </script>
+</body>
+</html>
